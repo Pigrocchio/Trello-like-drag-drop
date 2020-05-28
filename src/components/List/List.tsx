@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Paper, CssBaseline } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Title from "./Title";
 import Card from "../Card";
 import InputContainer from '../Input/InputContainer'
 import { Droppable, Draggable } from 'react-beautiful-dnd';
-import { listenerCount } from "process";
+import ColorButton from '../ColorButton/ColorButton'
 
 
 interface Props {
@@ -23,21 +23,30 @@ interface Props {
 
 
 
-const useStyle = makeStyles((theme) => ({
-  root: {
-    width: "100wh",
-    backgroundColor: "#ebebeb",
-    marginLeft: theme.spacing(1),
-  },
-  cardContainer: {
-    marginTop: theme.spacing(4),
-  },
-}));
 
 const List: React.FC<Props> = (props) => {
-  const classes = useStyle();
-  let id = props.list.id;
+  const [cardColor, setcardColor] = useState("#ebebeb");
   
+  let id = props.list.id;
+
+  const useStyle = makeStyles((theme) => ({
+    root: {
+      width: "100wh",
+      backgroundColor: `${cardColor}`,
+      marginLeft: theme.spacing(1),
+    },
+    cardContainer: {
+      marginTop: theme.spacing(4),
+    },
+  }));
+  const classes = useStyle();
+
+  const changeColorList = (color) => {    
+setcardColor(color)
+
+};
+
+
   return (
     <Draggable draggableId={props.list.id} index={props.index}>
       {(provided) => (
@@ -55,13 +64,21 @@ const List: React.FC<Props> = (props) => {
                   {props.list.cards.map((card, idx) => {
                     let id = card.id;
 
-                    return <Card key={id} list={props.list.id} card={card} index={idx} />;
+                    return (
+                      <Card
+                        key={id}
+                        list={props.list.id}
+                        card={card}
+                        index={idx}
+                      />
+                    );
                   })}
                   {provided.placeholder}
                 </div>
               )}
             </Droppable>
             <InputContainer type="card" listId={props.list.id} />
+            <ColorButton changeColorList={changeColorList}></ColorButton>
           </Paper>
         </div>
       )}
