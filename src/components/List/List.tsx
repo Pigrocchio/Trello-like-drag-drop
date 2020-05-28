@@ -12,8 +12,13 @@ interface Props {
   list: {
     id: string
     title: string
-    cards: []
+    cards: [
+      {
+        id: string,
+      title: string}
+    ]
   }    
+  index: number
 }
 
 
@@ -34,28 +39,33 @@ const List: React.FC<Props> = (props) => {
   let id = props.list.id;
   
   return (
-    <Paper className={classes.root}>
-      <CssBaseline />
-      <Title title={props.list.title} listId={props.list.id} />
-      <Droppable droppableId={id}>
-        {(provided) => (
-          <div
-            ref={provided.innerRef}
-            {...provided.droppableProps}
-            className={classes.cardContainer}
-          >
-            {props.list.cards.map((card, idx) => { 
+    <Draggable draggableId={props.list.id} index={props.index}>
+      {(provided) => (
+        <div {...provided.draggableProps} ref={provided.innerRef}>
+          <Paper className={classes.root} {...provided.dragHandleProps}>
+            <CssBaseline />
+            <Title title={props.list.title} listId={props.list.id} />
+            <Droppable droppableId={id}>
+              {(provided) => (
+                <div
+                  ref={provided.innerRef}
+                  {...provided.droppableProps}
+                  className={classes.cardContainer}
+                >
+                  {props.list.cards.map((card, idx) => {
+                    let id = card.id;
 
-              
-              return < Card key = { idx } card = { card } index = { idx } />
-              
-})}
-            {provided.placeholder}
-          </div>
-        )}
-      </Droppable>
-      <InputContainer type="card" listId={props.list.id} />
-    </Paper>
+                    return <Card key={id} card={card} index={idx} />;
+                  })}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+            <InputContainer type="card" listId={props.list.id} />
+          </Paper>
+        </div>
+      )}
+    </Draggable>
   );
 };
 

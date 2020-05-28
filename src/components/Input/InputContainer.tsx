@@ -24,7 +24,6 @@ interface contProps {
 }
 
 const InputContainer: React.FC<contProps> = (props) => {
- console.log(props.listId)
   const classes = useStyle();
   const [open, setOpen] = useState(false);
 
