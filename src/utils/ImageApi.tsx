@@ -16,6 +16,7 @@ const getImages = async () => {
       link: image.user.links.html,
     },
   }));
+  
   return photos;
 };
 

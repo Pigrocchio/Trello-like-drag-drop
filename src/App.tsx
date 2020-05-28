@@ -64,7 +64,7 @@ const App: React.FC = () => {
     const newState = {
       ...data,
       lists: {
-        ...data.lists,d
+        ...data.lists,
         [listId]: list,
       },
     };

@@ -56,7 +56,13 @@ const SideMenu = ({ setBackgroundUrl, setBackgroundColor, setOpen, open }: Sidem
     const [colors, setColors] = useState([]);
 
   const readImge = async () => {
-    setPhotos(await getImages());
+    setPhotos(await getImages().then(x => {
+      console.log(x)
+      let startImage = (x[0].full)
+      setBackgroundUrl(startImage)
+      return x
+    }))
+    ;
   };
 
     const readColor = async () => {
@@ -65,8 +71,10 @@ const SideMenu = ({ setBackgroundUrl, setBackgroundColor, setOpen, open }: Sidem
   }  
     
   useEffect(() => {
-      readImge();
-      readColor()
+    readImge()
+    readColor();
+    
+    
      
   }, []);
 
@@ -75,8 +83,9 @@ const SideMenu = ({ setBackgroundUrl, setBackgroundColor, setOpen, open }: Sidem
 
             return (
               <div className={classes.menuContainer}>
-                {colors.map((color: any) => (
+                {colors.map((color: any, idx:any) => (
                   <div
+                    key={idx}
                     className={classes.menu}
                     style={{
                       backgroundColor: `#${color}`,
