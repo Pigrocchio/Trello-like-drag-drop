@@ -55,7 +55,7 @@ const List: React.FC<Props> = (props) => {
                   {props.list.cards.map((card, idx) => {
                     let id = card.id;
 
-                    return <Card key={id} card={card} index={idx} />;
+                    return <Card key={id} list={props.list.id} card={card} index={idx} />;
                   })}
                   {provided.placeholder}
                 </div>

@@ -22,6 +22,7 @@ const useStyle = makeStyles((theme) => ({
 }));
 
 interface Props {
+  list: any,
   card: {
     id: string,
     title: string
@@ -38,7 +39,7 @@ const Card: React.FC<Props> = (props) => {
  
  
   const handelBtnDelete = () => {
-    deleteCard(props.card.id)
+    deleteCard(props.card.id, props.list)
   };
   
 

@@ -7,12 +7,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import TopBar from "./components/TopBar";
 import SideMenu from "./components/SideMenu";
-import { v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4 } from "uuid";
 require("dotenv").config();
-
-
-
-
 
 const useStyle = makeStyles((theme) => ({
   root: {
@@ -56,24 +52,24 @@ const App: React.FC = () => {
     setData(newState);
   };
 
-  const deleteCard = (cardId) => {
-    
-    
+  const deleteCard = (cardId, listId) => {
+    const list = data.lists[listId];
 
-    
+    let filterCardResult = list.cards.filter((x: any) => x.id !== cardId);
 
+    console.log(filterCardResult);
 
-    const entries = Object.entries(data.lists)
-    console.log('entries', entries)
-    let result:any = []
-    entries.map(x => {
-      x.map(x => {        
-       result.push(x)
-      })
-    })
-    console.log(result)
-  }
-  
+    list.cards = filterCardResult;
+
+    const newState = {
+      ...data,
+      lists: {
+        ...data.lists,d
+        [listId]: list,
+      },
+    };
+    setData(newState);
+  };
 
   const addMoreList = (title: any) => {
     console.log(title);
