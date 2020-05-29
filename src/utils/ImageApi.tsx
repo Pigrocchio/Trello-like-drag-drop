@@ -3,7 +3,7 @@ import axios from "axios";
 
 const getImages = async () => {
   const page = Math.floor(Math.random() * 20 + 1);
-  const urlImages = `https://api.unsplash.com/search/photos?page=${page}&query=Landscape&client_id=${lbxNnSa7rMUFhzJTFptbMgRne30G84iKZszBhOjnAcA}`;
+  const urlImages = `https://api.unsplash.com/search/photos?page=${page}&query=Landscape&client_id='lbxNnSa7rMUFhzJTFptbMgRne30G84iKZszBhOjnAcA`;
   ;
 
   const res = await axios.get(urlImages);
