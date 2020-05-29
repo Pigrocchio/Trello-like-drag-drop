@@ -54,6 +54,7 @@ const Card: React.FC<Props> = (props) => {
           <Paper className={classes.card}>
             {props.card.title}{" "}
             <CancelIcon
+              cursor="pointer"
               className={classes.MuiSvgIconroot}
               onClick={handelBtnDelete}
             />

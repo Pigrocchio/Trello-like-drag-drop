@@ -9,6 +9,7 @@ const useStyle = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
   },
   addCard: {
+    cursor:'pointer',
     padding: theme.spacing(1, 1, 1, 2),
     margin: theme.spacing(0, 1, 1, 1),
     backgroundColor: "#ebecf0",
@@ -38,7 +39,7 @@ const InputContainer: React.FC<contProps> = (props) => {
           elevation={0}
           onClick={() => setOpen(!open)}
         >
-          <Typography>{props.type === 'card' ? '+ Add a Card' : 'Add a list'}</Typography>
+          <Typography>{props.type === 'card' ? '+ Add a Card' : '+ Add a list'}</Typography>
         </Paper>
       </Collapse>
     </div>

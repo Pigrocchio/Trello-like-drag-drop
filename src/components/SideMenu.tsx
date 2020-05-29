@@ -28,6 +28,7 @@ const useStyle = makeStyles((theme) => ({
     flexWrap: "wrap",
   },
   menu: {
+    cursor: 'pointer',
     width: "45%",
     height: "90px",
     background: "blue",
@@ -151,10 +152,10 @@ const SideMenu = ({ setBackgroundUrl, setBackgroundColor, setOpen, open }: Sidem
     >
       <div className={classes.titleContainer}>
         <Typography className={classes.title}>Change Background</Typography>
-        <Clear onClick={() => setOpen(!open)} />
+        <Clear cursor="pointer"  onClick={() => setOpen(!open)} />
       </div>
       <Divider />
-      <div className={classes.menuContainer}>
+      <div className={classes.menuContainer} >
         <div
           className={classes.menu}
           style={{

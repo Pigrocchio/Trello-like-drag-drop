@@ -7,23 +7,32 @@ const useStyle = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     margin: theme.spacing(2),
+    "font-family": "Quicksand",
   },
   title: {
     fontSize: "2rem",
     fontWeight: "bold",
     flexGrow: 1,
+    'font-variant-caps': 'all-petite-caps'
+    
   },
+
   btn: {
     color: "#fff",
     background: "hsla(0,0%,100%,.24)",
   },
 }));
 
+
+ 
+
 export default function TopBar({ setOpen }) {
   const classes = useStyle();
   return (
     <div className={classes.root}>
-      <Typography className={classes.title}>KanBan Style App</Typography>
+      <Typography className={classes.title}>
+        KanBan Style App
+      </Typography>
       <Button className={classes.btn} onClick={() => setOpen(true)}>
         Change Background
       </Button>

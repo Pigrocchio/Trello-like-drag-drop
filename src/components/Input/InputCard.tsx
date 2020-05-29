@@ -63,21 +63,26 @@ const InputCard = ({ setOpen, listId, type }: InputCardProps) => {
       <div>
         <Paper className={classes.card}>
           <InputBase
+            
             onChange={handleOnChange}
             onBlur={handleBlur}
             multiline
             fullWidth
             inputProps={{ classes: classes.input }}
             value={title}
-            placeholder={type === 'card' ? 'Enter a title of this card' : 'Enter list title'}
+            placeholder={
+              type === "card"
+                ? "Enter a title of this card"
+                : "Enter list title"
+            }
           />
         </Paper>
       </div>
-      <div className={classes.confirm}>
+      <div  className={classes.confirm}>
         <Button className={classes.btnConfirm} onClick={handelBtnConfim}>
-          {type === 'card' ? 'Add Card' : 'Add list'}
+          {type === "card" ? "Add Card" : "Add list"}
         </Button>
-        <IconButton onClick={() => setOpen(false)}>
+        <IconButton  onClick={() => setOpen(false)}>
           <ClearIcon />
         </IconButton>
       </div>
