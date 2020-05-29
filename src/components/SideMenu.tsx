@@ -4,7 +4,8 @@ import { Drawer, Typography, Divider, Link } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Clear from "@material-ui/icons/Clear";
 import { getImages } from "../utils/ImageApi";
-import {getColor} from '../utils/colorApi'
+import { getColor } from '../utils/colorApi'
+import { generateRandomColor } from "../utils/generateColor";
 
 
 
@@ -67,13 +68,13 @@ const SideMenu = ({ setBackgroundUrl, setBackgroundColor, setOpen, open }: Sidem
   };
 
     const readColor = async () => {
-    setColors(await getColor())
+    setColors(generateRandomColor(8))
     
   }  
     
   useEffect(() => {
     readImge()
-    readColor();
+    readColor()
     
     
      
@@ -89,12 +90,12 @@ const SideMenu = ({ setBackgroundUrl, setBackgroundColor, setOpen, open }: Sidem
                     key={idx}
                     className={classes.menu}
                     style={{
-                      backgroundColor: `#${color}`,
+                      backgroundColor: `${color}`,
                       backgroundSize: "cover",
                       backgroundRepeat: "no-repeat",
                     }}
                         onClick={() => { 
-                            setBackgroundColor(`#${color}`);
+                            setBackgroundColor(`${color}`);
                             setBackgroundUrl('');
                             
                         }}
